@@ -13,7 +13,7 @@ pros::Motor DRIVEbackRIGHT(6, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENC
 
 
 pros::Motor INTAKE(8, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODER_COUNTS);
-pros::Motor CATA(7, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_COUNTS);
+pros::Motor CATA(7, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_COUNTS);
 
 //Controller
 

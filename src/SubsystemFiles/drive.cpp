@@ -5,12 +5,12 @@
 void SetDriveMotors(int motors, int right, int left){
   
   if(motors == 6){
-    DRIVEmidLEFT = left;
-    DRIVEmidRight = right;
-    DRIVEbackLEFT = left;
-    DRIVEbackRIGHT = right;
-    DRIVEfrontLEFT = left;
-    DRIVEfrontRIGHT = right;}
+    DRIVEmidLEFT = right;
+    DRIVEmidRight = left;
+    DRIVEbackLEFT = right;
+    DRIVEbackRIGHT = left;
+    DRIVEfrontLEFT = right;
+    DRIVEfrontRIGHT = left;}
   
 }
 

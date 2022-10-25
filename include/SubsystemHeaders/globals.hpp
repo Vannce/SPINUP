@@ -26,7 +26,6 @@ extern pros::Controller controller;
 extern pros:: ADIDigitalOut Endgame;
 
 //Odometry?
-extern std::shared_ptr<okapi::ChassisControllerBuilder> chassis;
-extern std::shared_ptr<AsyncMotionProfileController> profileController;
+
 
 //GUI

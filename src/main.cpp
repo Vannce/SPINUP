@@ -30,23 +30,11 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {
+void initialize();
 
-//    setIntakeAuton();
-   /* okapi::ChassisControllerBuilder()
-    .withMotors(3,-4, 1, -2)
-    .withDimensions(AbstractMotor::gearset::green, {{4_in,15_in}, okapi::imev5GreenTPR})
-    .withSensors(
-        ADIEncoder{'A', 'B'},//left
-        ADIEncoder{'C', 'D',true},//right
-        ADIEncoder{'E','F'}//middle
-    )
-    //specidy tracking wheel diameter (2.75in), track(7in), and TPR (360)
-    //specify middle wheel distance (1in) and diameter (2.75in)
-    .withOdometry({{2.75_in, 7_in, 1_in, 2.75_in},okapi::quadEncoderTPR})
-    .buildOdometry();
-    */
-}
+void autonomous();
+
+void opcontrol();
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -61,6 +49,4 @@ void autonomous() {
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
-
-
 
