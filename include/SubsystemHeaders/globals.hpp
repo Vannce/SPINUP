@@ -23,9 +23,7 @@ extern pros::Controller controller;
 //Miscellaneous
 
 //Pneumatics
-extern pros::ADIDigitalOut Intake;
-extern pros::ADIDigitalOut Flywheel;
-extern pros:: ADIDigitalOut IndexerPiston;
+extern pros:: ADIDigitalOut Endgame;
 
 //Odometry?
 extern std::shared_ptr<okapi::ChassisControllerBuilder> chassis;

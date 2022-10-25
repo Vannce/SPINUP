@@ -21,6 +21,7 @@ INTAKE.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
                 setCATAMotor();  
 //            setIntakeMotors();
             setDrive(6);  
+            setPneumatics();
   }
 
 }

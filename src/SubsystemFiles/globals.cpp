@@ -21,6 +21,5 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 //PTOS
 
-pros::ADIDigitalOut Intake('B');
-pros::ADIDigitalOut Flywheel('A');
-pros::ADIDigitalOut IndexerPiston('C');
+pros::ADIDigitalOut Endgame('A');
+
