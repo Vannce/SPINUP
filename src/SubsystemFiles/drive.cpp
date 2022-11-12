@@ -26,8 +26,3 @@ void setDrive(int motors){
     SetDriveMotors(motors, vertical + turn, vertical - turn);
 }
 
-void setDriveAuton(){
-  SetDriveMotors(4,127, 127);
-  pros::c::delay(200);
-  SetDriveMotors(4, 0, 0);
-}

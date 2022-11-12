@@ -18,8 +18,8 @@ DRIVEmidRight.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 CATA.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 INTAKE.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 
-                setCATAMotor();  
-//            setIntakeMotors();
+            setCATAMotor();  
+            setIntakeMotors();
             setDrive(6);  
             setPneumatics();
   }

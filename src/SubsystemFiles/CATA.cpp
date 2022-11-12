@@ -7,6 +7,6 @@ void setCATA(int power){
 
 //driver control functions
 void setCATAMotor(){
-    int CATAPower = 127 * (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)- controller.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT));
+    int CATAPower = -127 * (controller.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT));
     setCATA(CATAPower);
 }
