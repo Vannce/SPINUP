@@ -23,3 +23,6 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 pros::ADIDigitalOut Endgame('A');
 
+//ODOM Stuff
+
+//Drivetrain

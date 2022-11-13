@@ -22,6 +22,9 @@ INTAKE.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
             setIntakeMotors();
             setDrive(6);  
             setPneumatics();
+
+//Aimbot
+
   }
 
 }

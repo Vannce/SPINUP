@@ -1,37 +1,35 @@
 #include "main.h"
-#include "okapi/api/util/mathUtil.hpp"
-#include "okapi/impl/chassis/controller/chassisControllerBuilder.hpp"
-#include "okapi/impl/control/async/asyncPosControllerBuilder.hpp"
-#include <memory>
-//Drivetrain
-std::shared_ptr<ChassisController> chassis =
+#include "okapi/api/control/async/asyncMotionProfileController.hpp"
+#include "okapi/impl/control/async/asyncMotionProfileControllerBuilder.hpp"
+
+std::shared_ptr<ChassisController> chassisAuton =
 ChassisControllerBuilder()
     .withMotors({1, 2, 3}, {4, 5, 6})
-    //Blue Gearset, 2.75in Diam, 11.5in wheel track
-    .withDimensions(AbstractMotor::gearset::blue, {{2.75_in, 11.5_in}, imev5BlueTPR})
-    .build();
+    //Blue Gearset, 4 in Diam, 11.5in wheel track
+    .withDimensions(AbstractMotor::gearset::blue, {{4_in, 11.5_in}, imev5BlueTPR})
+    .withSensors(
+        ADIEncoder{'A', 'B'}, //left encoder in A and B
+        ADIEncoder{'C', 'D', true} // right encoder in C and D, reversed
+    )
+    .withOdometry({{4_in, 7_in}, quadEncoderTPR}, StateMode::FRAME_TRANSFORMATION)
+    .buildOdometry();
 
-//Catapult
-const double CatakP = 0.001;
-const double CatakI = 0.0001;
-const double CatakD = 0.0001;
-std::shared_ptr<AsyncPositionController<double, double>> CataController = 
-AsyncPosControllerBuilder()
-.withMotor(7)
-.withGains({CatakP, CatakI, CatakD})
-.build();
 
-//Intake
-const double IntakekP = 0.001;
-const double IntakekI = 0.0001;
-const double IntakekD = 0.0001;
-std::shared_ptr<AsyncPositionController<double, double>> IntakeController = 
-AsyncPosControllerBuilder()
-.withMotor(8)
-.withGains({IntakekP, IntakekI, IntakekD})
-.build();
+std::shared_ptr<AsyncMotionProfileController> profileControllerAuton =
+    AsyncMotionProfileControllerBuilder()
+    .withLimits({
+        1.0, //maximum linear velocity
+        2.0, //maximum linear acceleration
+        10.0 // maximum linear jerk
+    })
+    .withOutput(chassisAuton)
+    .buildMotionProfileController();
+
+
+
 
 void autonomous() {
-    chassis-> moveDistance(0.5_m);
-    chassis-> turnAngle(180_deg);
+    //goal is at -1, 5
+    chassisAuton->setState({0_in, 0_in, 0_deg});
+    
 }
