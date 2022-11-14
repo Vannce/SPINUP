@@ -1,8 +1,9 @@
 #include "main.h"
 #include "okapi/api/control/async/asyncMotionProfileController.hpp"
 #include "okapi/impl/control/async/asyncMotionProfileControllerBuilder.hpp"
+#include "pros/misc.h"
 
-std::shared_ptr<ChassisController> chassisAuton =
+std::shared_ptr<OdomChassisController> chassis =
 ChassisControllerBuilder()
     .withMotors({1, 2, 3}, {4, 5, 6})
     //Blue Gearset, 4 in Diam, 11.5in wheel track
@@ -14,6 +15,18 @@ ChassisControllerBuilder()
     .withOdometry({{4_in, 7_in}, quadEncoderTPR}, StateMode::FRAME_TRANSFORMATION)
     .buildOdometry();
 
+void aimbot(){
+        //goal is at -1, 5
+    while(true){
+        if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
+        
+        chassis-> turnToPoint({-1_ft, 5_ft});
+    }
+    }
+
+
+}
+
 
 std::shared_ptr<AsyncMotionProfileController> profileControllerAuton =
     AsyncMotionProfileControllerBuilder()
@@ -22,14 +35,15 @@ std::shared_ptr<AsyncMotionProfileController> profileControllerAuton =
         2.0, //maximum linear acceleration
         10.0 // maximum linear jerk
     })
-    .withOutput(chassisAuton)
+    .withOutput(chassis)
     .buildMotionProfileController();
 
 
 
 
 void autonomous() {
-    //goal is at -1, 5
-    chassisAuton->setState({0_in, 0_in, 0_deg});
+
+    
     
 }
+
